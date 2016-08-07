@@ -16,7 +16,16 @@
 """
 
 import pickle
+from time import time
+t0 = time()
+print("Loading data...")
 
-enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
-
+#changed 'r' to 'rb' for python 3
+enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", 'rb'))
+print("Loading time:", time()-t0)
+print("Number of people:", len(enron_data))
+print("Number of features:", len(enron_data["SKILLING JEFFREY K"].keys()))
+print("Number of interesting people:", sum(enron_data[person]['poi'] for person in enron_data.keys()))
+print(list(enron_data.keys()))
+print(list(enron_data["SKILLING JEFFREY K"].keys()))
 
